@@ -1,0 +1,39 @@
+---
+import {i18nUtils} from '../../i18n/i18nUtils';
+import {getRelativeLocaleUrl} from 'astro:i18n';
+
+export async function getStaticPaths() {
+    return [
+        {params: {lang: 'de'}},
+        {params: {lang: 'en'}}
+    ];
+}
+
+const {lang} = Astro.params;
+const translations = i18nUtils.getTranslations(lang);
+const siteTitle = translations.common.siteTitle;
+
+const deUrl = getRelativeLocaleUrl('de');
+const enUrl = getRelativeLocaleUrl('en');
+import '../../styles/style.css';
+---
+
+<html lang={lang}>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" sizes="any"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>{siteTitle}</title>
+</head>
+<body>
+<div class="content-wrapper">
+    <h1>{siteTitle}</h1>
+    <p>{translations.indexPage.heroMain.subheading}</p>
+    <div>
+        <a href={deUrl}>Deutsch</a>
+        <a href={enUrl}>English</a>
+    </div>
+</div>
+</body>
+</html>

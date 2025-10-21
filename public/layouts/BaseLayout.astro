@@ -1,0 +1,35 @@
+---
+import Head from '../components/Head.astro';
+
+interface Props {
+    title: string;
+    lang: string;
+}
+
+const {title, lang = 'de'} = Astro.props;
+---
+<!doctype html>
+<html lang={lang} data-theme="light">
+<head>
+    <Head title={title}/>
+    <slot name="head"/>
+</head>
+<body>
+<div>
+    <div class="hero-wrapper">
+        <slot name="hero"/>
+    </div>
+</div>
+<main>
+    <slot/>
+</main>
+<footer>
+    <div class="footer-main-content">
+        <slot name="footer-main"/>
+    </div>
+    <div class="footer-bottom">
+        <slot name="footer-bottom"/>
+    </div>
+</footer>
+</body>
+</html>

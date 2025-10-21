@@ -1,0 +1,156 @@
+{
+  "common": {
+    "siteTitle": {
+      "de": "Mind-Objects XR",
+      "en": "Mind-Objects XR"
+    }
+  },
+  "indexPage": {
+    "heroMain": {
+      "heading": {
+        "de": "Mind-Objects XR",
+        "en": "Mind-Objects XR"
+      },
+      "subheading": {
+        "de": "Ein Werkzeug zur Visualisierung Ihrer Gedanken.",
+        "en": "A tool for visualizing your thoughts."
+      },
+      "primaryButtonText": {
+        "de": "Beta beitreten",
+        "en": "Join Beta"
+      },
+      "secondaryButtonText": {
+        "de": "3D-Skizzen ansehen",
+        "en": "View 3D-Sketches"
+      }
+    },
+    "aboutTitle": {
+      "de": "Über Mind-Objects XR",
+      "en": "About Mind-Objects XR"
+    },
+    "aboutParagraph1": {
+      "de": "Mind-Objects XR ist ein Werkzeug, um Ideen schnell direkt im 3D-Raum zu skizzieren und so eine frühe Konzeptvisualisierung schnell und mühelos zu ermöglichen.",
+      "en": "Mind-Objects XR is a tool for quickly sketching ideas directly in 3D space, making early concept visualization fast and effortless."
+    },
+    "aboutParagraph2": {
+      "de": "Benutzer können handgezeichnete Objekte mit beiden Händen greifen, bewegen und skalieren, was kreatives Denken und Assoziationsfindung fördert.",
+      "en": "Users can grab, move, and scale hand-drawn objects with both hands, encouraging creative thinking and association finding."
+    },
+    "aboutParagraph3": {
+      "de": "Die App konzentriert sich auf Einfachheit und Geschwindigkeit und verwandelt Ideen innerhalb von Minuten in immersive Prototypen.",
+      "en": "The app focuses on simplicity and speed, turning ideas into immersive prototypes within minutes."
+    },
+    "explorerTitle": {
+      "de": "3D-Skizzen erkunden",
+      "en": "Explore 3D Sketches"
+    },
+    "features": {
+      "featuresTitle": {
+        "de": "Funktionen",
+        "en": "Features"
+      },
+      "feature1Title": {
+        "de": "Intuitive 3D-Skizzierung",
+        "en": "Intuitive 3D Sketching"
+      },
+      "feature1Description": {
+        "de": "Verwandeln Sie den 3D-Raum in Ihre Leinwand und zeichnen Sie Ideen mit natürlichen Handbewegungen, um ohne viel Ablenkung im kreativen Fluss zu bleiben.",
+        "en": "Turn 3D space into your canvas and sketch ideas with natural hand movements, keeping you in a state of creative flow without a lot of distractions."
+      },
+      "feature2Title": {
+        "de": "Einfache Bedienung",
+        "en": "Easy to Use"
+      },
+      "feature2Description": {
+        "de": "Dank des minimalistischen Designs können Sie – auch ohne Vorkenntnisse – sofort und intuitiv loslegen.",
+        "en": "Thanks to the minimalist design, you can get started immediately and intuitively, even without any prior experience."
+      },
+      "feature3Title": {
+        "de": "Schnelle Prototypenerstellung",
+        "en": "Rapid Prototyping"
+      },
+      "feature3Description": {
+        "de": "Beschleunigen Sie Ihren Workflow von Wochen auf Minuten und erstellen Sie Prototypen, die Sie sofort in 3D erleben können.",
+        "en": "Accelerate your workflow from weeks to minutes and create tangible prototypes that you can immediately experience in 3D."
+      },
+      "feature4Title": {
+        "de": "Direkte Einbeziehung des reellen Raums",
+        "en": "Direct Involvement of Real Space"
+      },
+      "feature4Description": {
+        "de": "Erweitern Sie reelle Objekte virtuell, um neue Perspektiven zu gewinnen und kreative Ideen zu entwickeln.",
+        "en": "Expand real objects virtually to gain new perspectives and develop creative ideas."
+      }
+    },
+    "explorerPage": {
+      "clickToViewText": {
+        "de": "zum Anzeigen in 3D klicken",
+        "en": "click to view in 3D"
+      },
+      "sketchFromText": {
+        "de": "3D-Skizze vom",
+        "en": "3D-Sketch from"
+      },
+      "viewIn3DText": {
+        "de": "In 3D ansehen",
+        "en": "View in 3D"
+      },
+      "loadMoreText": {
+        "de": "Mehr laden",
+        "en": "Load more"
+      },
+      "errorLoadingText": {
+        "de": "Fehler beim Laden der Zeichnungen.",
+        "en": "Error loading the drawings."
+      }
+    },
+    "faq": {
+      "faqTitle": {
+        "de": "Häufig gestellte Fragen",
+        "en": "Frequently Asked Questions"
+      },
+      "faq1Question": {
+        "de": "Welche Hardware benötige ich?",
+        "en": "What hardware do I need?"
+      },
+      "faq1Answer": {
+        "de": "Die Beta von Mind-Objects XR ist aktuell für die Meta Quest 2, 3 und Pro verfügbar. Am Logitech MX Ink Support wird gearbeitet.",
+        "en": "The Mind-Objects XR beta is currently available for the Meta Quest 2, 3, and Pro. Support for Logitech MX Ink is in progress."
+      },
+      "faq2Question": {
+        "de": "Kann ich meine Skizzen exportieren?",
+        "en": "Can I export my sketches?"
+      },
+      "faq2Answer": {
+        "de": "Ja, der Export Ihrer Kreationen hat für die Vollversion höchste Priorität. Wir unterstützen aktuell das GLB-Format für einen nahtlosen Workflow.",
+        "en": "Yes, exporting your creations is a top priority for the full version. We currently support the GLB format for a seamless workflow.."
+      },
+      "faq3Question": {
+        "de": "Was kostet Mind-Objects XR?",
+        "en": "How much does Mind-Objects XR cost?"
+      },
+      "faq3Answer": {
+        "de": "Die Teilnahme an der Beta-Phase ist komplett kostenlos. Das Preismodell für die kommerzielle Veröffentlichung werden wir zu einem späteren Zeitpunkt bekannt geben.",
+        "en": "Participation in the beta phase is completely free. We will announce the pricing model for the commercial release at a later date."
+      },
+      "faq4Question": {
+        "de": "Ist Kollaboration möglich?",
+        "en": "Is collaboration possible?"
+      },
+      "faq4Answer": {
+        "de": "In Zukunft können Sie mit anderen Benutzern in einem gemeinsamen virtuellen Raum zusammenarbeiten und Objekte in Echtzeit erstellen und diskutieren. Das Feature befindet sich aktuell noch in Entwicklung.",
+        "en": "In the future, you will be able to collaborate with other users in a shared virtual space and create and discuss objects in real-time. This feature is still under development at the moment."
+      }
+    },
+    "footer": {
+      "legalNotice": {
+        "de": "Impressum",
+        "en": "Legal Notice"
+      },
+      "websiteDesignedBy": {
+        "de": "Webseite gestaltet und entwickelt von ",
+        "en": "Website designed and developed by "
+      }
+    }
+  }
+}
