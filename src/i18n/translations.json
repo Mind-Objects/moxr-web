@@ -3,6 +3,10 @@
     "siteTitle": {
       "de": "Mind-Objects XR",
       "en": "Mind-Objects XR"
+    },
+    "siteDescription": {
+        "de": "Mind-Objects XR macht 3D-Skizzen greifbar. Intuitiv in Extended Reality.",
+        "en": "Mind-Objects XR makes 3D sketches tangible. Intuitive in Extended Reality."
     }
   },
   "indexPage": {
@@ -151,6 +155,20 @@
         "de": "Webseite gestaltet und entwickelt von ",
         "en": "Website designed and developed by "
       }
+    }
+  },
+  "page404": {
+    "title": {
+      "de": "404 - Seite nicht gefunden",
+      "en": "404 - Page Not Found"
+    },
+    "body": {
+      "de": "Die von Ihnen angeforderte Seite konnte nicht gefunden werden.",
+      "en": "The page you requested could not be found."
+    },
+    "goToHomepage": {
+        "de": "Zur Startseite",
+        "en": "Go to homepage"
     }
   }
 }

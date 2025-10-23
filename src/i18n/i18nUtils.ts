@@ -34,11 +34,4 @@ export const i18nUtils = {
         const lang = locale || 'de';
         return getTranslatedObject(allKeyGroups as TranslationObject, lang);
     },
-
-    /**
-     * Redirects to the default German page if no language is specified.
-     */
-    redirectToDefault(): string {
-        return '/de';
-    }
 };

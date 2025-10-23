@@ -12,21 +12,17 @@ export async function getStaticPaths() {
 const {lang} = Astro.params;
 const translations = i18nUtils.getTranslations(lang);
 const siteTitle = translations.common.siteTitle;
+const siteDescription = translations.common.siteDescription;
 
 const deUrl = getRelativeLocaleUrl('de');
 const enUrl = getRelativeLocaleUrl('en');
 import '../../styles/style.css';
+import Head from '../../components/Head.astro';
 ---
 
 <html lang={lang}>
 <head>
-    <meta charset="utf-8"/>
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" sizes="any"/>
-    <meta name="viewport" content="width=device-width"/>
-    <meta name="generator" content={Astro.generator}/>
-    <link rel="preload" href="/fonts/inter-v19-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/inter-v19-latin-700.woff2" as="font" type="font/woff2" crossorigin>
-    <title>{siteTitle}</title>
+    <Head title={siteTitle} description={siteDescription}/>
 </head>
 <body>
 <div class="content-wrapper">
