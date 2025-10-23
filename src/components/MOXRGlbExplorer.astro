@@ -1,0 +1,217 @@
+---
+import {urls as configUrls} from "../config";
+interface Props {
+    urls: typeof configUrls;
+    t: any;
+}
+const {urls, t} = Astro.props;
+---
+<div class="container-Explorer">
+    <div class="grid-Explorer" id="grid-Explorer"></div>
+    <div id="load-more-container"></div>
+</div>
+
+<div id="iframe-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000;">
+    <iframe id="viewer-iframe" title="3D model viewer" style="width: 90%; height: 90%; border: none; position: absolute; top: 5%; left: 5%;"></iframe>
+    <button id="close-iframe" class="close-iframe-btn" aria-label="Close 3D viewer">X</button>
+</div>
+
+<script define:vars={{ t }}>
+    let allFiles = [];
+    let baseUrl = '';
+    let thumbnailExtension = '';
+    let currentIndex = 0;
+
+    const windowWidth = window.innerWidth;
+    const isMobile = windowWidth < 768;
+
+    let initialLoadCount;
+    let loadMoreCount;
+
+    if (isMobile) {
+        initialLoadCount = 3;
+        loadMoreCount = 0;
+    } else if (windowWidth < 940) {
+        initialLoadCount = 6;
+        loadMoreCount = 3;
+    } else if (windowWidth < 1160) {
+        initialLoadCount = 8;
+        loadMoreCount = 4;
+    } else {
+        initialLoadCount = 10;
+        loadMoreCount = 5;
+    }
+
+    const iframeContainer = document.getElementById('iframe-container');
+    const viewerIframe = document.getElementById('viewer-iframe');
+    const closeIframeButton = document.getElementById('close-iframe');
+
+    function openViewer(url) {
+        viewerIframe.src = url;
+        iframeContainer.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeViewer() {
+        viewerIframe.src = '';
+        iframeContainer.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    closeIframeButton.addEventListener('click', closeViewer);
+
+    iframeContainer.addEventListener('click', (e) => {
+        if (e.target === iframeContainer) {
+            closeViewer();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeViewer();
+        }
+    });
+
+    function formatFile(file) {
+        const filename = file.filename;
+        const parts = filename.split('_');
+        const datePart = parts[1] || '';
+        const timePart = parts[2] || '';
+        const creatorPart = parts[3] || '';
+        const year = datePart.substring(0, 4);
+        const month = datePart.substring(4, 6);
+        const day = datePart.substring(6, 8);
+
+        const hour = timePart.substring(0, 2);
+        const minute = timePart.substring(2, 4);
+
+        const creator = creatorPart.replace('.glb', ' ').replaceAll('-', ' ');
+
+        let daysAgo = '';
+        if (datePart) {
+            const fileDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+            const today = new Date();
+            fileDate.setHours(0, 0, 0, 0);
+            today.setHours(0, 0, 0, 0);
+
+            const diffTime = today.getTime() - fileDate.getTime();
+            const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 0) daysAgo = t.today;
+            else if (diffDays === 1) daysAgo = t.yesterday;
+            else if (diffDays < 7) daysAgo = t.daysAgo.replace('{d}', diffDays);
+            else if (diffDays < 30) daysAgo = t.weeksAgo.replace('{w}', Math.floor(diffDays / 7));
+            else if (diffDays < 365) daysAgo = t.monthsAgo.replace('{m}', Math.floor(diffDays / 30));
+            else if (diffDays >= 365) daysAgo = t.yearsAgo.replace('{y}', Math.floor(diffDays / 365));
+        }
+
+        const thumbnailUrl = `${baseUrl}${filename.replace('.glb', thumbnailExtension)}`;
+        const fileUrl = `${baseUrl}${filename}`;
+        return {filename, creator, daysAgo, thumbnailUrl, fileUrl};
+    }
+
+    function appendFiles(filesToAppend) {
+        const grid = document.getElementById("grid-Explorer");
+        filesToAppend.forEach(file => {
+            const {filename, creator, daysAgo, thumbnailUrl, fileUrl} =
+                formatFile(file);
+
+            const col = document.createElement("div");
+            col.className = "card-Explorer";
+            const viewerUrl = `https://mind-objects.github.io/moxr-glb-viewer/?file=${filename}`;
+            col.innerHTML = `
+          <a href="${viewerUrl}" class="card-explorer-link">
+            <p class="card-img-text">${t.clickToViewText}</p>
+            <img src="${thumbnailUrl}" class="card-img-top" alt="Thumbnail for ${filename}" draggable="false" style="user-select: none; -webkit-user-drag: none;" loading="lazy" />
+          </a>
+          <div class="card-body">
+              <div class="card-text">
+              <p class="card-title" title="${filename}">${t.sketchFromText} ${daysAgo}</p>
+              <p class="card-description">${creator}</p>
+              <a href="${viewerUrl}" class="card-explorer-btn">
+                  <p class="card-btn-text">${t.viewIn3DText}</p>
+                </a>
+          </div>
+    `;
+            col.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openViewer(a.href);
+                });
+            });
+            grid.appendChild(col);
+        });
+    }
+
+    function loadMoreFiles() {
+        const filesToLoad = allFiles.slice(currentIndex, currentIndex + loadMoreCount);
+        appendFiles(filesToLoad);
+        currentIndex += filesToLoad.length;
+        updateLoadMoreButton();
+    }
+
+    function updateLoadMoreButton() {
+        const container = document.getElementById('load-more-container');
+        container.innerHTML = '';
+
+        if (!isMobile && currentIndex < allFiles.length) {
+            const button = document.createElement('button');
+            button.textContent = t.loadMoreText;
+            button.className = 'btn btn-Primary';
+            button.addEventListener('click', loadMoreFiles);
+            container.appendChild(button);
+        }
+    }
+
+    async function loadExplorer() {
+        try {
+            const res = await fetch("https://00224466.xyz/MOXR/MOXRGlbExplorer.json", {cache: "no-store"});
+            if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+            const data = await res.json();
+
+            baseUrl = data.baseUrl;
+            thumbnailExtension = data.thumbnailExtension;
+
+            data.files.sort((a, b) => {
+                const partsA = a.filename.split('_');
+                const partsB = b.filename.split('_');
+
+                const datePartA = partsA[1];
+                const timePartA = partsA[2];
+                const dateA = new Date(
+                    parseInt(datePartA.substring(0, 4)),
+                    parseInt(datePartA.substring(4, 6)) - 1,
+                    parseInt(datePartA.substring(6, 8)),
+                    parseInt(timePartA.substring(0, 2)),
+                    parseInt(timePartA.substring(2, 4)),
+                    parseInt(timePartA.substring(4, 6))
+                );
+
+                const datePartB = partsB[1];
+                const timePartB = partsB[2];
+                const dateB = new Date(
+                    parseInt(datePartB.substring(0, 4)),
+                    parseInt(datePartB.substring(4, 6)) - 1,
+                    parseInt(datePartB.substring(6, 8)),
+                    parseInt(timePartB.substring(0, 2)),
+                    parseInt(timePartB.substring(2, 4)),
+                    parseInt(timePartB.substring(4, 6))
+                );
+
+                return dateB - dateA; // newest first
+            });
+
+            allFiles = data.files;
+            const filesToLoad = allFiles.slice(currentIndex, currentIndex + initialLoadCount);
+            appendFiles(filesToLoad);
+            currentIndex += filesToLoad.length;
+            updateLoadMoreButton();
+
+        } catch (err) {
+            console.error(err);
+            document.getElementById("grid-Explorer").innerHTML = `<p>${t.errorLoadingText}</p>`;
+        }
+    }
+
+    loadExplorer();
+</script>

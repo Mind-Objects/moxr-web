@@ -14,12 +14,15 @@ const translations = i18nUtils.getTranslations(lang);
 const siteTitle = translations.common.siteTitle;
 const siteDescription = translations.common.siteDescription;
 
+
 import LanguageSwitch from '../../components/LanguageSwitch.astro';
 
-const deUrl = getRelativeLocaleUrl('de');
-const enUrl = getRelativeLocaleUrl('en');
+const deUrl = getRelativeLocaleUrl('de', 'explorer');
+const enUrl = getRelativeLocaleUrl('en', 'explorer');
 import '../../styles/style.css';
+import '../../styles/explorer.css';
 import Head from '../../components/Head.astro';
+import MOXRGlbExplorer from '../../components/MOXRGlbExplorer.astro';
 ---
 
 <html lang={lang}>
@@ -28,10 +31,13 @@ import Head from '../../components/Head.astro';
 </head>
 <body>
 <div class="content-wrapper">
-    <h1>{siteTitle}</h1>
-    <LanguageSwitch lang={lang} />
-    <p>{translations.indexPage.heroMain.subheading}</p>
-    <a href={getRelativeLocaleUrl(lang, 'explorer')}>{translations.indexPage.explorerTitle}</a>
+    <h1>{translations.explorerPage.title}</h1>
+    <div class="controls">
+        <LanguageSwitch lang={lang} slug="explorer" />
+        <a href={getRelativeLocaleUrl(lang)} class="home-link">{translations.common.home}</a>
+    </div>
+
+    <MOXRGlbExplorer t={translations.explorerPage}></MOXRGlbExplorer>
 </div>
 </body>
 </html>

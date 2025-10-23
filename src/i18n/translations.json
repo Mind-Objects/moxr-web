@@ -7,6 +7,10 @@
     "siteDescription": {
         "de": "Mind-Objects XR macht 3D-Skizzen greifbar. Intuitiv in Extended Reality.",
         "en": "Mind-Objects XR makes 3D sketches tangible. Intuitive in Extended Reality."
+    },
+    "home": {
+        "de": "Startseite",
+        "en": "Home"
     }
   },
   "indexPage": {
@@ -86,28 +90,6 @@
         "en": "Expand real objects virtually to gain new perspectives and develop creative ideas."
       }
     },
-    "explorerPage": {
-      "clickToViewText": {
-        "de": "zum Anzeigen in 3D klicken",
-        "en": "click to view in 3D"
-      },
-      "sketchFromText": {
-        "de": "3D-Skizze vom",
-        "en": "3D-Sketch from"
-      },
-      "viewIn3DText": {
-        "de": "In 3D ansehen",
-        "en": "View in 3D"
-      },
-      "loadMoreText": {
-        "de": "Mehr laden",
-        "en": "Load more"
-      },
-      "errorLoadingText": {
-        "de": "Fehler beim Laden der Zeichnungen.",
-        "en": "Error loading the drawings."
-      }
-    },
     "faq": {
       "faqTitle": {
         "de": "Häufig gestellte Fragen",
@@ -169,6 +151,56 @@
     "goToHomepage": {
         "de": "Zur Startseite",
         "en": "Go to homepage"
+    }
+  },
+  "explorerPage": {
+    "title": {
+      "de": "Explorer",
+      "en": "Explorer"
+    },
+    "clickToViewText": {
+      "de": "zum Anzeigen in 3D klicken",
+      "en": "click to view in 3D"
+    },
+    "sketchFromText": {
+      "de": "3D-Skizze vom",
+      "en": "3D-Sketch from"
+    },
+    "viewIn3DText": {
+      "de": "In 3D ansehen",
+      "en": "View in 3D"
+    },
+    "loadMoreText": {
+      "de": "Mehr laden",
+      "en": "Load more"
+    },
+    "errorLoadingText": {
+      "de": "Fehler beim Laden der Zeichnungen.",
+      "en": "Error loading the drawings."
+    },
+    "today": {
+        "de": "heute",
+        "en": "today"
+    },
+    "yesterday": {
+        "de": "gestern",
+        "en": "yesterday"
+    },
+    "daysAgo": {
+        "de": "vor {d} Tagen",
+        "en": "{d} days ago"
+    },
+    "weeksAgo": {
+        "de": "vor {w} Wochen",
+        "en": "{w} weeks ago"
+    },
+    "monthsAgo": {
+        "de": "vor {m} Monaten",
+        "en": "{m} months ago"
+    },
+    "yearsAgo": {
+        "de": "vor {y} Jahren",
+        "en": "{y} years ago"
     }
   }
 }

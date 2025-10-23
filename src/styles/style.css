@@ -30,6 +30,14 @@
     src: url('/fonts/inter-v19-latin-700.woff2') format('woff2');
 }
 
+:root {
+    --color-Primary: #0e0e0e;
+    --color-Secondary: #fff;
+    --color-accent: #d60000;
+    --color-dark-grey: #333;
+    --color-grey: #666;
+    --color-white: #fff;
+}
 
 html,
 body {
@@ -70,4 +78,29 @@ p{
     max-width: 1280px;
     margin: 50px auto;
     padding: 0 30px;
+}
+
+
+.btn {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    margin-top: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-Primary {
+    background-color: var(--color-Primary);
+    color: var(--color-Secondary);
+    border: 2px solid var(--color-Primary);
+}
+
+
+.btn-Secondary {
+    background-color: var(--color-Secondary);
+    color: var(--color-Primary);
+    border: 2px solid var(--color-Primary);
 }
