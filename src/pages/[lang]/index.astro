@@ -10,28 +10,60 @@ export async function getStaticPaths() {
 }
 
 const {lang} = Astro.params;
-const translations = i18nUtils.getTranslations(lang);
-const siteTitle = translations.common.siteTitle;
-const siteDescription = translations.common.siteDescription;
+const locales = ['de', 'en'];
+const isValidLang = typeof lang === 'string' && locales.includes(lang);
+
+let translations;
+let siteTitle;
+let siteDescription;
+let explorerUrl;
+
+if (isValidLang) {
+    translations = i18nUtils.getTranslations(lang);
+    siteTitle = translations.common.siteTitle;
+    siteDescription = translations.common.siteDescription;
+    explorerUrl = getRelativeLocaleUrl(lang, 'explorer');
+} else {
+    // Invalid locale in the path (e.g. /brokenlink). Return a 404 with default locale translations.
+    Astro.response.status = 404;
+    const defaultLang = 'de';
+    translations = i18nUtils.getTranslations(defaultLang);
+    siteTitle = translations.page404.title;
+    siteDescription = translations.common.siteDescription;
+    explorerUrl = `/${defaultLang}/explorer`;
+}
 
 import LanguageSwitch from '../../components/LanguageSwitch.astro';
 
-const deUrl = getRelativeLocaleUrl('de');
-const enUrl = getRelativeLocaleUrl('en');
+// Remove unused deUrl/enUrl and create a typedLang for safe prop typing
+const typedLang = (isValidLang ? (lang as 'de' | 'en') : 'de');
 import '../../styles/style.css';
 import Head from '../../components/Head.astro';
 ---
 
-<html lang={lang}>
+<html lang={isValidLang ? lang : 'de'}>
 <head>
+    <title>{siteTitle}</title>
     <Head title={siteTitle} description={siteDescription}/>
 </head>
 <body>
 <div class="content-wrapper">
+{isValidLang ? (
+  <>
     <h1>{siteTitle}</h1>
-    <LanguageSwitch lang={lang} />
+    <LanguageSwitch lang={typedLang} />
     <p>{translations.indexPage.heroMain.subheading}</p>
-    <a href={getRelativeLocaleUrl(lang, 'explorer')}>{translations.indexPage.explorerTitle}</a>
+    <a href={explorerUrl}>{translations.indexPage.explorerTitle}</a>
+  </>
+) : (
+  <>
+    <div class="flex flex-col items-center justify-center text-center h-screen">
+        <h1>{translations.page404.title}</h1>
+        <p>{translations.page404.body}</p>
+        <a href={`/${'de'}`} class="text-lg mt-4">{translations.page404.goToHomepage}</a>
+    </div>
+  </>
+)}
 </div>
 </body>
 </html>

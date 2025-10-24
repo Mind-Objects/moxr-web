@@ -1,6 +1,5 @@
 ---
 import { i18nUtils } from '../i18n/i18nUtils';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import Head from '../components/Head.astro';
 
 Astro.response.status = 404;
@@ -8,7 +7,8 @@ Astro.response.status = 404;
 const locales = ['de', 'en'];
 const pathParts = Astro.url.pathname.split('/').filter(p => p);
 let lang = 'de';
-if (pathParts.length > 0 && locales.includes(pathParts[0])) {
+// Ignore file-like requests (contain a dot) when deciding locale
+if (pathParts.length > 0 && !pathParts[0].includes('.') && locales.includes(pathParts[0])) {
   lang = pathParts[0];
 }
 
@@ -20,13 +20,14 @@ import '../styles/style.css';
 
 <html lang={lang}>
 <head>
+    <title>{t.page404.title}</title>
     <Head title={t.page404.title} description={siteDescription}/>
 </head>
 <body>
 <div class="content-wrapper">
     <div class="flex flex-col items-center justify-center text-center h-screen">
-        <h1 class="text-4xl font-bold">{t.page404.title}</h1>
-        <p class="text-lg mt-4">{t.page404.body}</p>
+        <h1>{t.page404.title}</h1>
+        <p>{t.page404.body}</p>
         <a href={`/${lang}`} class="text-lg mt-4">{t.page404.goToHomepage}</a>
     </div>
 </div>
