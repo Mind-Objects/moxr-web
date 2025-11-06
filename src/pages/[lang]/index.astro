@@ -1,7 +1,7 @@
 ---
 import {i18nUtils} from '../../i18n/i18nUtils';
 import {getRelativeLocaleUrl} from 'astro:i18n';
-import FeatureCardWrapper from "../../components/FeatureCardWrapper.astro";
+import HighlightCard from "../../components/HighlightCard.astro";
 
 export const ssr = true;
 
@@ -44,24 +44,32 @@ import Head from '../../components/Head.astro';
 </head>
 <body>
 <div class="content-wrapper">
-{isValidLang ? (
-  <>
-    <h1>{siteTitle}</h1>
-    <LanguageSwitch lang={typedLang} />
-    <p>{translations.indexPage.heroMain.subheading}</p>
-    <a href={explorerUrl}>{translations.indexPage.explorerTitle}</a>
-  </>
-) : (
-  <>
-    <div class="flex flex-col items-center justify-center text-center h-screen">
-        <h1>{translations.page404.title}</h1>
-        <p>{translations.page404.body}</p>
-        <a href={`/${'de'}`} class="text-lg mt-4">{translations.page404.goToHomepage}</a>
-    </div>
-  </>
-)}
+    {isValidLang ? (
+            <>
+                <h1>{siteTitle}</h1>
+                <LanguageSwitch lang={typedLang}/>
+                <p>{translations.indexPage.heroMain.subheading}</p>
+                <a href={explorerUrl}>{translations.indexPage.explorerTitle}</a>
+                <HighlightCard
+                        highlightCardTitle1={translations.indexPage.highlightCard.highlightCard1.title}
+                        highlightCardSubTitle1={translations.indexPage.highlightCard.highlightCard1.description}
+                        highlightCardTitle2={translations.indexPage.highlightCard.highlightCard2.title}
+                        highlightCardSubTitle2={translations.indexPage.highlightCard.highlightCard2.description}
+                        highlightCardTitle3={translations.indexPage.highlightCard.highlightCard3.title}
+                        highlightCardSubTitle3={translations.indexPage.highlightCard.highlightCard3.description}
+                />
+            </>
+    ) : (
+            <>
+                <div class="flex flex-col items-center justify-center text-center h-screen">
+                    <h1>{translations.page404.title}</h1>
+                    <p>{translations.page404.body}</p>
+                    <a href={`/${'de'}`} class="text-lg mt-4">{translations.page404.goToHomepage}</a>
+                </div>
+            </>
+    )}
 
-    <FeatureCardWrapper />
+
 </div>
 </body>
 </html>

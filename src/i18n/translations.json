@@ -5,12 +5,12 @@
       "en": "Mind-Objects XR"
     },
     "siteDescription": {
-        "de": "Mind-Objects XR macht 3D-Skizzen greifbar. Intuitiv in Extended Reality.",
-        "en": "Mind-Objects XR makes 3D sketches tangible. Intuitive in Extended Reality."
+      "de": "Mind-Objects XR macht 3D-Skizzen greifbar. Intuitiv in Extended Reality.",
+      "en": "Mind-Objects XR makes 3D sketches tangible. Intuitive in Extended Reality."
     },
     "home": {
-        "de": "Startseite",
-        "en": "Home"
+      "de": "Startseite",
+      "en": "Home"
     }
   },
   "indexPage": {
@@ -51,6 +51,38 @@
     "explorerTitle": {
       "de": "3D-Skizzen erkunden",
       "en": "Explore 3D Sketches"
+    },
+    "highlightCard": {
+      "highlightCard1": {
+        "title": {
+          "de": "Meta Quest",
+          "en": "Meta Quest"
+        },
+        "description": {
+          "de": "2 - 3 - Pro",
+          "en": "2 - 3 - Pro"
+        }
+      },
+      "highlightCard2": {
+        "title": {
+          "de": "3D-Export",
+          "en": "3D Export"
+        },
+        "description": {
+          "de": "Export als GLB",
+          "en": "Export as GLB"
+        }
+      },
+      "highlightCard3": {
+        "title": {
+          "de": "Kollaboration",
+          "en": "Collaboration"
+        },
+        "description": {
+          "de": "bald verfügbar",
+          "en": "coming soon"
+        }
+      }
     },
     "features": {
       "featuresTitle": {
@@ -149,8 +181,8 @@
       "en": "The page you requested could not be found."
     },
     "goToHomepage": {
-        "de": "Zur Startseite",
-        "en": "Go to homepage"
+      "de": "Zur Startseite",
+      "en": "Go to homepage"
     }
   },
   "explorerPage": {
@@ -179,28 +211,28 @@
       "en": "Error loading the drawings."
     },
     "today": {
-        "de": "heute",
-        "en": "today"
+      "de": "heute",
+      "en": "today"
     },
     "yesterday": {
-        "de": "gestern",
-        "en": "yesterday"
+      "de": "gestern",
+      "en": "yesterday"
     },
     "daysAgo": {
-        "de": "vor {d} Tagen",
-        "en": "{d} days ago"
+      "de": "vor {d} Tagen",
+      "en": "{d} days ago"
     },
     "weeksAgo": {
-        "de": "vor {w} Wochen",
-        "en": "{w} weeks ago"
+      "de": "vor {w} Wochen",
+      "en": "{w} weeks ago"
     },
     "monthsAgo": {
-        "de": "vor {m} Monaten",
-        "en": "{m} months ago"
+      "de": "vor {m} Monaten",
+      "en": "{m} months ago"
     },
     "yearsAgo": {
-        "de": "vor {y} Jahren",
-        "en": "{y} years ago"
+      "de": "vor {y} Jahren",
+      "en": "{y} years ago"
     }
   }
 }

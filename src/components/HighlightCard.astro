@@ -1,0 +1,64 @@
+---
+interface Props {
+    highlightCardTitle1: string;
+    highlightCardSubTitle1: string;
+    highlightCardTitle2: string;
+    highlightCardSubTitle2: string;
+    highlightCardTitle3: string;
+    highlightCardSubTitle3: string;
+}
+const {
+    highlightCardTitle1,
+    highlightCardSubTitle1,
+    highlightCardTitle2,
+    highlightCardSubTitle2,
+    highlightCardTitle3,
+    highlightCardSubTitle3
+} = Astro.props;
+---
+<div>
+    <div class="feature-card-wrapper">
+        <div class="feature-card border">
+            <h3>{highlightCardTitle1}</h3>
+            <p>{highlightCardSubTitle1}</p>
+        </div>
+        <div class="feature-card border">
+            <h3>{highlightCardTitle2}</h3>
+            <p>{highlightCardSubTitle2}</p>
+        </div>
+        <div class="feature-card border">
+            <h3>{highlightCardTitle3}</h3>
+            <p>{highlightCardSubTitle3}</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .feature-card-wrapper {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .feature-card {
+        border: 4px solid transparent;
+        border-radius: 1rem;
+        padding: 0.5rem 4rem;
+        margin: 1rem;
+        text-align: center;
+        width: 200px;
+        background: linear-gradient(#fff, #fff) padding-box, linear-gradient(35deg, #340101, #9A0303) border-box;
+    }
+
+    .feature-card h3, .feature-card p {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0 0.5rem;
+    }
+
+    .feature-card p {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+</style>
