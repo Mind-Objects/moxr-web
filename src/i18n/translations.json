@@ -53,6 +53,14 @@
       "en": "Explore 3D Sketches"
     },
     "highlightCard": {
+      "title": {
+        "de": "Skizziere mit Händen. Denke dreidimensional.",
+        "en": "Sketch with your hands. Think in 3D."
+      },
+      "description": {
+        "de": "Die App konzentriert sich auf Einfachheit und Geschwindigkeit. Du zeichnest mit natürlichen Handbewegungen und ordnest Objekte frei im Raum. Das fördert Assoziationen und macht Ideen greifbar.",
+        "en": "The app focuses on simplicity and speed. You draw with natural hand movements and arrange objects freely in space. This promotes associations and makes ideas tangible."
+      },
       "highlightCard1": {
         "title": {
           "de": "Meta Quest",
@@ -85,41 +93,49 @@
       }
     },
     "features": {
-      "featuresTitle": {
-        "de": "Funktionen",
+      "title": {
+        "de": "Was Mind-Objects XR dir bringt",
         "en": "Features"
       },
-      "feature1Title": {
-        "de": "Intuitive 3D-Skizzierung",
-        "en": "Intuitive 3D Sketching"
+      "feature1": {
+        "title": {
+          "de": "Intuitive 3D-Skizzierung",
+          "en": "Intuitive 3D Sketching"
+        },
+        "description": {
+          "de": "Verwandeln Sie den 3D-Raum in Ihre Leinwand und zeichnen Sie Ideen mit natürlichen Handbewegungen, um ohne viel Ablenkung im kreativen Fluss zu bleiben.",
+          "en": "Turn 3D space into your canvas and sketch ideas with natural hand movements, keeping you in a state of creative flow without a lot of distractions."
+        }
       },
-      "feature1Description": {
-        "de": "Verwandeln Sie den 3D-Raum in Ihre Leinwand und zeichnen Sie Ideen mit natürlichen Handbewegungen, um ohne viel Ablenkung im kreativen Fluss zu bleiben.",
-        "en": "Turn 3D space into your canvas and sketch ideas with natural hand movements, keeping you in a state of creative flow without a lot of distractions."
+      "feature2": {
+        "title": {
+          "de": "Einfache Bedienung",
+          "en": "Easy to Use"
+        },
+        "description": {
+          "de": "Dank des minimalistischen Designs können Sie – auch ohne Vorkenntnisse – sofort und intuitiv loslegen.",
+          "en": "Thanks to the minimalist design, you can get started immediately and intuitively, even without any prior experience."
+        }
       },
-      "feature2Title": {
-        "de": "Einfache Bedienung",
-        "en": "Easy to Use"
+      "feature3": {
+        "title": {
+          "de": "Schnelle Prototypenerstellung",
+          "en": "Rapid Prototyping"
+        },
+        "description": {
+          "de": "Beschleunigen Sie Ihren Workflow von Wochen auf Minuten und erstellen Sie Prototypen, die Sie sofort in 3D erleben können.",
+          "en": "Accelerate your workflow from weeks to minutes and create tangible prototypes that you can immediately experience in 3D."
+        }
       },
-      "feature2Description": {
-        "de": "Dank des minimalistischen Designs können Sie – auch ohne Vorkenntnisse – sofort und intuitiv loslegen.",
-        "en": "Thanks to the minimalist design, you can get started immediately and intuitively, even without any prior experience."
-      },
-      "feature3Title": {
-        "de": "Schnelle Prototypenerstellung",
-        "en": "Rapid Prototyping"
-      },
-      "feature3Description": {
-        "de": "Beschleunigen Sie Ihren Workflow von Wochen auf Minuten und erstellen Sie Prototypen, die Sie sofort in 3D erleben können.",
-        "en": "Accelerate your workflow from weeks to minutes and create tangible prototypes that you can immediately experience in 3D."
-      },
-      "feature4Title": {
-        "de": "Direkte Einbeziehung des reellen Raums",
-        "en": "Direct Involvement of Real Space"
-      },
-      "feature4Description": {
-        "de": "Erweitern Sie reelle Objekte virtuell, um neue Perspektiven zu gewinnen und kreative Ideen zu entwickeln.",
-        "en": "Expand real objects virtually to gain new perspectives and develop creative ideas."
+      "feature4": {
+        "title": {
+          "de": "Direkte Einbeziehung des reellen Raums",
+          "en": "Direct Involvement of Real Space"
+        },
+        "description": {
+          "de": "Erweitern Sie reelle Objekte virtuell, um neue Perspektiven zu gewinnen und kreative Ideen zu entwickeln.",
+          "en": "Expand real objects virtually to gain new perspectives and develop creative ideas."
+        }
       }
     },
     "faq": {

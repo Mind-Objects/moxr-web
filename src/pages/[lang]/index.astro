@@ -2,8 +2,11 @@
 import {i18nUtils} from '../../i18n/i18nUtils';
 import {getRelativeLocaleUrl} from 'astro:i18n';
 import HighlightCard from "../../components/HighlightCard.astro";
+import FeatureCard from "../../components/FeatureCard.astro";
 
 export const ssr = true;
+// ensure the exported 'ssr' is referenced so TypeScript doesn't warn it's unused
+void ssr;
 
 const {lang} = Astro.params;
 const locales = ['de', 'en'];
@@ -46,10 +49,11 @@ import Head from '../../components/Head.astro';
 <div class="content-wrapper">
     {isValidLang ? (
             <>
-                <h1>{siteTitle}</h1>
                 <LanguageSwitch lang={typedLang}/>
-                <p>{translations.indexPage.heroMain.subheading}</p>
                 <a href={explorerUrl}>{translations.indexPage.explorerTitle}</a>
+
+                <h2>{translations.indexPage.highlightCard.title}</h2>
+                <p>{translations.indexPage.highlightCard.description}</p>
                 <HighlightCard
                         highlightCardTitle1={translations.indexPage.highlightCard.highlightCard1.title}
                         highlightCardSubTitle1={translations.indexPage.highlightCard.highlightCard1.description}
@@ -57,6 +61,28 @@ import Head from '../../components/Head.astro';
                         highlightCardSubTitle2={translations.indexPage.highlightCard.highlightCard2.description}
                         highlightCardTitle3={translations.indexPage.highlightCard.highlightCard3.title}
                         highlightCardSubTitle3={translations.indexPage.highlightCard.highlightCard3.description}
+                />
+                <h2>{translations.indexPage.features.title}</h2>
+                <FeatureCard
+                    title1={translations.indexPage.features.feature1.title}
+                    subtitle1={translations.indexPage.features.feature1.description}
+                    imgSrc1={'https://placehold.co/200x200'}
+                    gifSrc1={'https://c.tenor.com/GdtADgzLdLUAAAAC/tenor.gif'}
+
+                    title2={translations.indexPage.features.feature2.title}
+                    subtitle2={translations.indexPage.features.feature2.description}
+                    imgSrc2={'https://placehold.co/200x200'}
+                    gifSrc2={'https://c.tenor.com/GdtADgzLdLUAAAAC/tenor.gif'}
+
+                    title3={translations.indexPage.features.feature3.title}
+                    subtitle3={translations.indexPage.features.feature3.description}
+                    imgSrc3={'https://placehold.co/200x200'}
+                    gifSrc3={'https://c.tenor.com/GdtADgzLdLUAAAAC/tenor.gif'}
+
+                    title4={translations.indexPage.features.feature4.title}
+                    subtitle4={translations.indexPage.features.feature4.description}
+                    imgSrc4={'https://placehold.co/200x200'}
+                    gifSrc4={'https://c.tenor.com/GdtADgzLdLUAAAAC/tenor.gif'}
                 />
             </>
     ) : (

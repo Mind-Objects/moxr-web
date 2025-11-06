@@ -1,0 +1,171 @@
+---
+interface Props {
+    title1?: string;
+    subtitle1?: string;
+    imgSrc1?: string;
+    gifSrc1?: string;
+
+    title2?: string;
+    subtitle2?: string;
+    imgSrc2?: string;
+    gifSrc2?: string;
+
+    title3?: string;
+    subtitle3?: string;
+    imgSrc3?: string;
+    gifSrc3?: string;
+
+    title4?: string;
+    subtitle4?: string;
+    imgSrc4?: string;
+    gifSrc4?: string;
+}
+
+const props = Astro.props as Props;
+const {
+    title1 = '',
+    subtitle1 = '',
+    imgSrc1 = '',
+    gifSrc1 = '',
+
+    title2 = '',
+    subtitle2 = '',
+    imgSrc2 = '',
+    gifSrc2 = '',
+
+    title3 = '',
+    subtitle3 = '',
+    imgSrc3 = '',
+    gifSrc3 = '',
+
+    title4 = '',
+    subtitle4 = '',
+    imgSrc4 = '',
+    gifSrc4 = ''
+} = props;
+---
+<div class="features-grid">
+    <article class="feature-card">
+        <div class="feature-text">
+            <h4>{title1}</h4>
+            <p>{subtitle1}</p>
+        </div>
+        <figure class="feature-image-wrapper">
+            <img src={imgSrc1} alt={title1 || 'feature image 1'} class="feature-gif" data-gif={gifSrc1}/>
+        </figure>
+    </article>
+
+    <article class="feature-card">
+        <div class="feature-text">
+            <h4>{title2}</h4>
+            <p>{subtitle2}</p>
+        </div>
+        <figure class="feature-image-wrapper">
+            <img src={imgSrc2} alt={title2 || 'feature image 2'} class="feature-gif" data-gif={gifSrc2}/>
+        </figure>
+    </article>
+
+    <article class="feature-card feature-card-reverse">
+        <figure class="feature-image-wrapper">
+            <img src={imgSrc3} alt={title3 || 'feature image 3'} class="feature-gif" data-gif={gifSrc3}/>
+        </figure>
+        <div class="feature-text">
+            <h4>{title3}</h4>
+            <p>{subtitle3}</p>
+        </div>
+    </article>
+
+    <article class="feature-card feature-card-reverse">
+        <figure class="feature-image-wrapper">
+            <img src={imgSrc4} alt={title4 || 'feature image 4'} class="feature-gif" data-gif={gifSrc4}/>
+        </figure>
+        <div class="feature-text">
+            <h4>{title4}</h4>
+            <p>{subtitle4}</p>
+        </div>
+    </article>
+</div>
+
+<style>
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .feature-card, .feature-card-reverse {
+        display: grid;
+        gap: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem;
+        border-radius: 1rem;
+        align-items: center;
+    }
+
+    .feature-card {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .feature-card-reverse {
+        grid-template-columns: 2fr 3fr;
+    }
+
+    .feature-card * img, .feature-card-reverse * img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+    }
+
+    .feature-card h4, .feature-card p {
+        padding-left: 1rem;
+    }
+
+    .feature-card-reverse h4, .feature-card-reverse p {
+        padding-left: 0.5rem;
+    }
+
+    .feature-image-wrapper {
+        position: relative;
+        line-height: 0;
+    }
+
+    .progress-bar-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: transparent;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        width: 0;
+        height: 100%;
+        background-color: var(--color-accent);
+        border-radius: 1rem;
+    }
+
+    .feature-card.active .progress-bar, .feature-card-reverse.active .progress-bar {
+        width: 100%;
+        transition: width 3s linear;
+    }
+
+
+    @media (max-width: 768px) {
+        #hero-Button-Wrapper {
+            flex-direction: column;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .feature-card, .feature-card-reverse {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
