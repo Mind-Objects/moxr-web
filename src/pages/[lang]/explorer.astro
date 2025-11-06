@@ -1,43 +1,68 @@
 ---
 import {i18nUtils} from '../../i18n/i18nUtils';
 import {getRelativeLocaleUrl} from 'astro:i18n';
+import {urls} from '../../config';
 
-export async function getStaticPaths() {
-    return [
-        {params: {lang: 'de'}},
-        {params: {lang: 'en'}}
-    ];
-}
+// Server-side render this dynamic route at request time.
+export const ssr = true;
 
 const {lang} = Astro.params;
-const translations = i18nUtils.getTranslations(lang);
-const siteTitle = translations.common.siteTitle;
-const siteDescription = translations.common.siteDescription;
+const locales = ['de', 'en'];
+const isValidLang = typeof lang === 'string' && locales.includes(lang);
 
+let translations;
+let siteTitle;
+let siteDescription;
+let typedLang: 'de' | 'en' = 'de';
+
+if (isValidLang) {
+    translations = i18nUtils.getTranslations(lang);
+    siteTitle = translations.common.siteTitle;
+    siteDescription = translations.common.siteDescription;
+    typedLang = lang as 'de' | 'en';
+} else {
+    // Invalid locale: return 404 with default locale content
+    Astro.response.status = 404;
+    const defaultLang = 'de';
+    translations = i18nUtils.getTranslations(defaultLang);
+    siteTitle = translations.page404.title || translations.common.siteTitle;
+    siteDescription = translations.common.siteDescription;
+}
 
 import LanguageSwitch from '../../components/LanguageSwitch.astro';
 
-const deUrl = getRelativeLocaleUrl('de', 'explorer');
-const enUrl = getRelativeLocaleUrl('en', 'explorer');
 import '../../styles/style.css';
 import '../../styles/explorer.css';
 import Head from '../../components/Head.astro';
 import MOXRGlbExplorer from '../../components/MOXRGlbExplorer.astro';
 ---
 
-<html lang={lang}>
+<html lang={isValidLang ? lang : 'de'}>
 <head>
+    <title>{siteTitle}</title>
     <Head title={siteTitle} description={siteDescription}/>
 </head>
 <body>
 <div class="content-wrapper">
+{isValidLang ? (
+  <>
     <h1>{translations.explorerPage.title}</h1>
     <div class="controls">
-        <LanguageSwitch lang={lang} slug="explorer" />
-        <a href={getRelativeLocaleUrl(lang)} class="home-link">{translations.common.home}</a>
+        <LanguageSwitch lang={typedLang} slug="explorer" />
+        <a href={getRelativeLocaleUrl(typedLang)} class="home-link">{translations.common.home}</a>
     </div>
 
-    <MOXRGlbExplorer t={translations.explorerPage}></MOXRGlbExplorer>
+    <MOXRGlbExplorer urls={urls} t={translations.explorerPage}></MOXRGlbExplorer>
+  </>
+) : (
+  <>
+    <div class="flex flex-col items-center justify-center text-center h-screen">
+        <h1>{translations.page404.title}</h1>
+        <p>{translations.page404.body}</p>
+        <a href={`/${'de'}`} class="text-lg mt-4">{translations.page404.goToHomepage}</a>
+    </div>
+  </>
+)}
 </div>
 </body>
 </html>

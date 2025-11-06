@@ -1,0 +1,42 @@
+---
+interface Props {
+    title: string;
+    subTitle: string;
+}
+const {title, subTitle} = Astro.props;
+---
+<div>
+    <div class="feature-card border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
+        <h3 class="feature-card-title text-xl font-semibold mb-2">{title}</h3>
+        <p class="text-sm text-gray-500">{subTitle}</p>
+    </div>
+</div>
+
+<style>
+    .feature-card {
+        border: 3px solid transparent;
+        border-radius: 0.5rem;
+        padding: 0.5rem 4rem;
+        margin: 1rem;
+        text-align: center;
+        width: 200px;
+        background: linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(35deg, #340101, #9A0303) border-box;
+    }
+
+    .feature-card h3, .feature-card p {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0 0.5rem;
+    }
+
+    .feature-card p{
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .feature-card-title {
+        color: #000;
+    }
+</style>
+

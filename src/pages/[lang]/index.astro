@@ -1,13 +1,9 @@
 ---
 import {i18nUtils} from '../../i18n/i18nUtils';
 import {getRelativeLocaleUrl} from 'astro:i18n';
+import FeatureCardWrapper from "../../components/FeatureCardWrapper.astro";
 
-export async function getStaticPaths() {
-    return [
-        {params: {lang: 'de'}},
-        {params: {lang: 'en'}}
-    ];
-}
+export const ssr = true;
 
 const {lang} = Astro.params;
 const locales = ['de', 'en'];
@@ -64,6 +60,8 @@ import Head from '../../components/Head.astro';
     </div>
   </>
 )}
+
+    <FeatureCardWrapper />
 </div>
 </body>
 </html>
