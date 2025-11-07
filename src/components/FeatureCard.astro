@@ -47,7 +47,7 @@ const {
 <div class="features-grid">
     <article class="feature-card">
         <div class="feature-text">
-            <h4>{title1}</h4>
+            <h3>{title1}</h3>
             <p>{subtitle1}</p>
         </div>
         <figure class="feature-image-wrapper">
@@ -57,7 +57,7 @@ const {
 
     <article class="feature-card">
         <div class="feature-text">
-            <h4>{title2}</h4>
+            <h3>{title2}</h3>
             <p>{subtitle2}</p>
         </div>
         <figure class="feature-image-wrapper">
@@ -70,7 +70,7 @@ const {
             <img src={imgSrc3} alt={title3 || 'feature image 3'} class="feature-gif" data-gif={gifSrc3}/>
         </figure>
         <div class="feature-text">
-            <h4>{title3}</h4>
+            <h3>{title3}</h3>
             <p>{subtitle3}</p>
         </div>
     </article>
@@ -80,14 +80,13 @@ const {
             <img src={imgSrc4} alt={title4 || 'feature image 4'} class="feature-gif" data-gif={gifSrc4}/>
         </figure>
         <div class="feature-text">
-            <h4>{title4}</h4>
+            <h3>{title4}</h3>
             <p>{subtitle4}</p>
         </div>
     </article>
 </div>
 
 <style>
-
     .features-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -117,41 +116,20 @@ const {
         border-radius: 0.5rem;
     }
 
-    .feature-card h4, .feature-card p {
+    .feature-card h3, .feature-card p {
         padding-left: 1rem;
+        margin: 0;
     }
 
-    .feature-card-reverse h4, .feature-card-reverse p {
+    .feature-card-reverse h3, .feature-card-reverse p {
         padding-left: 0.5rem;
+        margin: 0;
     }
 
     .feature-image-wrapper {
+        margin: 0;
         position: relative;
         line-height: 0;
-    }
-
-    .progress-bar-container {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background-color: transparent;
-        border-bottom-left-radius: 0.5rem;
-        border-bottom-right-radius: 0.5rem;
-        overflow: hidden;
-    }
-
-    .progress-bar {
-        width: 0;
-        height: 100%;
-        background-color: var(--color-accent);
-        border-radius: 1rem;
-    }
-
-    .feature-card.active .progress-bar, .feature-card-reverse.active .progress-bar {
-        width: 100%;
-        transition: width 3s linear;
     }
 
 
