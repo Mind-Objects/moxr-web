@@ -3,6 +3,11 @@ import {i18nUtils} from '../../i18n/i18nUtils';
 import {getRelativeLocaleUrl} from 'astro:i18n';
 import HighlightCard from "../../components/HighlightCard.astro";
 import FeatureCard from "../../components/FeatureCard.astro";
+import LanguageSwitch from '../../components/LanguageSwitch.astro';
+import Head from '../../components/Head.astro';
+import '../../styles/style.css';
+import IndexLayout from '../../layouts/IndexLayout.astro';
+import Navbar from '../../components/Navbar.astro';
 
 export const ssr = true;
 // ensure the exported 'ssr' is referenced so TypeScript doesn't warn it's unused
@@ -32,38 +37,43 @@ if (isValidLang) {
     explorerUrl = `/${defaultLang}/explorer`;
 }
 
-import LanguageSwitch from '../../components/LanguageSwitch.astro';
-
 // Remove unused deUrl/enUrl and create a typedLang for safe prop typing
 const typedLang = (isValidLang ? (lang as 'de' | 'en') : 'de');
-import '../../styles/style.css';
-import Head from '../../components/Head.astro';
 ---
+<IndexLayout title={siteTitle} lang={isValidLang ? lang : 'de'}>
+    <Head slot="Head" title={siteTitle} description={siteDescription}/>
 
-<html lang={isValidLang ? lang : 'de'}>
-<head>
-    <title>{siteTitle}</title>
-    <Head title={siteTitle} description={siteDescription}/>
-</head>
-<body>
-<div class="content-wrapper">
-    {isValidLang ? (
-            <>
-                <LanguageSwitch lang={typedLang}/>
-                <a href={explorerUrl}>{translations.indexPage.explorerTitle}</a>
 
-                <h2>{translations.indexPage.highlightCard.title}</h2>
-                <p>{translations.indexPage.highlightCard.description}</p>
-                <HighlightCard
-                        highlightCardTitle1={translations.indexPage.highlightCard.highlightCard1.title}
-                        highlightCardSubTitle1={translations.indexPage.highlightCard.highlightCard1.description}
-                        highlightCardTitle2={translations.indexPage.highlightCard.highlightCard2.title}
-                        highlightCardSubTitle2={translations.indexPage.highlightCard.highlightCard2.description}
-                        highlightCardTitle3={translations.indexPage.highlightCard.highlightCard3.title}
-                        highlightCardSubTitle3={translations.indexPage.highlightCard.highlightCard3.description}
-                />
-                <h2>{translations.indexPage.features.title}</h2>
-                <FeatureCard
+    <div slot="Hero">
+        <Navbar>
+            <a slot="Logo" href="/" >
+                <figure class="logo">
+                    <img src="/assets/favicon.svg" alt="MOXR Logo" width="100" height="100"/>
+                </figure>
+            </a>
+            <LanguageSwitch lang={typedLang} slot="LanguageSwitch"/>
+            <a href={explorerUrl} slot="ExplorerPage">{translations.indexPage.explorerTitle}</a>
+            <a href="/" slot="ContactPage">Contact</a>
+        </Navbar>
+    </div>
+
+    <div slot="HighlightCard">
+        <h2>{translations.indexPage.highlightCard.title}</h2>
+        <p>{translations.indexPage.highlightCard.description}</p>
+        <HighlightCard
+                highlightCardTitle1={translations.indexPage.highlightCard.highlightCard1.title}
+                highlightCardSubTitle1={translations.indexPage.highlightCard.highlightCard1.description}
+                highlightCardTitle2={translations.indexPage.highlightCard.highlightCard2.title}
+                highlightCardSubTitle2={translations.indexPage.highlightCard.highlightCard2.description}
+                highlightCardTitle3={translations.indexPage.highlightCard.highlightCard3.title}
+                highlightCardSubTitle3={translations.indexPage.highlightCard.highlightCard3.description}
+        />
+    </div>
+
+    <div slot="Features">
+        <h2>{translations.indexPage.featuresTitle}</h2>
+        <div class="features-grid">
+            <FeatureCard
                     title1={translations.indexPage.features.feature1.title}
                     subtitle1={translations.indexPage.features.feature1.description}
                     imgSrc1={'https://placehold.co/200x200'}
@@ -83,19 +93,13 @@ import Head from '../../components/Head.astro';
                     subtitle4={translations.indexPage.features.feature4.description}
                     imgSrc4={'https://placehold.co/200x200'}
                     gifSrc4={'https://c.tenor.com/GdtADgzLdLUAAAAC/tenor.gif'}
-                />
-            </>
-    ) : (
-            <>
-                <div class="flex flex-col items-center justify-center text-center h-screen">
-                    <h1>{translations.page404.title}</h1>
-                    <p>{translations.page404.body}</p>
-                    <a href={`/${'de'}`} class="text-lg mt-4">{translations.page404.goToHomepage}</a>
-                </div>
-            </>
-    )}
+            />
+        </div>
+    </div>
 
+    <div slot="CTA">
+    </div>
 
-</div>
-</body>
-</html>
+    <div slot="Footer">
+    </div>
+</IndexLayout>

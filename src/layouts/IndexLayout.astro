@@ -1,0 +1,48 @@
+---
+import Head from '../components/Head.astro';
+
+interface Props {
+    title: string;
+    lang: string;
+}
+
+const {title, lang = 'de'} = Astro.props;
+---
+<!doctype html>
+<html lang={lang} data-theme="light">
+<head>
+    <Head title={title}/>
+    <slot name="Head"/>
+</head>
+<body>
+<main>
+    <div class="hero-wrapper">
+        <slot name="Hero"/>
+    </div>
+    <div class="content-wrapper">
+        <slot name="HighlightCard"/>
+        <slot name="Features"/>
+        <slot name="CTA"/>
+    </div>
+</main>
+<footer>
+    <slot name="Footer"/>
+</footer>
+</body>
+</html>
+
+<style>
+    .hero-wrapper {
+        background-image: radial-gradient(rgba(143, 143, 143, 0.3) 2px, var(--color-white) 2px);
+        background-size: 1.5rem 1.5rem;
+        margin: 0;
+        padding: 0;
+    }
+    .content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+
+</style>

@@ -104,3 +104,8 @@ p{
     color: var(--color-Primary);
     border: 2px solid var(--color-Primary);
 }
+
+.logo{
+    margin: 0;
+    padding: 0;
+}

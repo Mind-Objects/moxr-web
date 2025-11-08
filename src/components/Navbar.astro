@@ -1,0 +1,42 @@
+---
+---
+<nav>
+    <ul>
+        <li>
+            <slot name="Logo"/>
+        </li>
+        <li>
+            <slot name="LanguageSwitch"/>
+        </li>
+        <li>
+            <slot name="ExplorerPage"/>
+        </li>
+        <li>
+            <slot name="ContactPage"/>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        position: relative;
+        min-height: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 2rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    li:first-child {
+        margin-right: auto;
+    }
+</style>
